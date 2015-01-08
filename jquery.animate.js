@@ -21,17 +21,17 @@
 		
 		var I = this,
 			statics = $.extend({}, properties),
-			//Get the original step function, so we can wrap it.
-			stepFn = options.step || $.noop,
-			//Wrap the original step function.
-			step = function(){				
-				if(typeof properties[fx.prop] === 'function'){
-					//Set the animation target value with the property function.
-					fx.end = properties[fx.prop].apply(this, arguments);
-				}
-				//Call the original step function.
-				return stepFn.apply(this, arguments);
-			};
+			step = options.step || $.noop;
+			
+		//Wrap the original step function.
+		options.step = function(){				
+			if(typeof properties[fx.prop] === 'function'){
+				//Set the animation target value with the property function.
+				fx.end = properties[fx.prop].apply(this, arguments);
+			}
+			//Call the original step function.
+			return stepFn.apply(this, arguments);
+		};
 		
 		$.each(properties, function(prop, value){
 			if(typeof value === 'function'){
