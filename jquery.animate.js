@@ -24,13 +24,13 @@
 			step = options.step || $.noop;
 			
 		//Wrap the original step function.
-		options.step = function(){				
+		options.step = function(now, fx){				
 			if(typeof properties[fx.prop] === 'function'){
 				//Set the animation target value with the property function.
 				fx.end = properties[fx.prop].apply(this, arguments);
 			}
 			//Call the original step function.
-			return stepFn.apply(this, arguments);
+			return step.apply(this, arguments);
 		};
 		
 		$.each(properties, function(prop, value){
