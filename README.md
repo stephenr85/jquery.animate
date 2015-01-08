@@ -8,4 +8,4 @@ $('#container').animate({
   }
 });
 
-Example: http://jsfiddle.net/dztqkpxz/4/
+Example: http://jsfiddle.net/stephenr85/y7n5bq00/
